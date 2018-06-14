@@ -1,7 +1,6 @@
 package com.crud.tasks.trello.client;
 
 import com.crud.tasks.domain.TrelloBoardDto;
-import com.sun.xml.internal.xsom.impl.util.Uri;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -12,6 +11,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class TrelloClient {
@@ -41,11 +41,15 @@ public class TrelloClient {
 
 public List<TrelloBoardDto> getTrelloBoards() {
 
-    TrelloBoardDto[] boardsresponse = restTemplate.getForObject(makeUrl(), TrelloBoardDto[].class);
+        TrelloBoardDto[] boardsresponse = restTemplate.getForObject(makeUrl(), TrelloBoardDto[].class);
 
-    if (boardsresponse != null) {
-        return Arrays.asList(boardsresponse);
+        Optional response = Optional.of(boardsresponse);
+
+        response.isPresent();
+
+            if (response!= null) {
+                 return Arrays.asList(boardsresponse);
+            }
+        return new ArrayList<>();
     }
-    return new ArrayList<>();
-}
 }
