@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @Getter
@@ -22,5 +23,5 @@ public class CreatedTrelloCard {
     @JsonProperty("badges")
     private TrelloBadgesDto badges;
 
-    public CreatedTrelloCard() {}
+    public CreatedTrelloCard(String id, String name, String shortUrl) {}
 }
