@@ -4,6 +4,7 @@ import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.trello.config.TrelloConfig;
+import org.hibernate.service.spi.InjectService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,8 +28,8 @@ public class TrelloClient {
 
 
 
-    @Autowired
-    private RestTemplate restTemplate;
+    //@Autowired
+    //private RestTemplate restTemplate;
 
     @Autowired
     private TrelloConfig trelloConfig;
@@ -36,11 +37,11 @@ public class TrelloClient {
 
    @Bean
     public TrelloConfig trelloConfig() {return new TrelloConfig();}
-
+*/
     @Bean
     public RestTemplate restTemplate() { return new RestTemplate(); }
 
-*/
+
 
 public List<TrelloBoardDto> getTrelloBoards() {
 
@@ -51,7 +52,7 @@ public List<TrelloBoardDto> getTrelloBoards() {
             .queryParam("lists", "all").build().encode().toUri();
 
         try {
-            TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
+            TrelloBoardDto[] boardsResponse = restTemplate().getForObject(url, TrelloBoardDto[].class);
             return Arrays.asList(ofNullable(boardsResponse).orElse(new TrelloBoardDto[0]));
         } catch (RestClientException e) {
             LOGGER.error(e.getMessage(), e);
@@ -67,7 +68,7 @@ public List<TrelloBoardDto> getTrelloBoards() {
                 .queryParam("desc", trelloCardDto.getDescription())
                 .queryParam("pos", trelloCardDto.getPos())
                 .queryParam("idList", trelloCardDto.getListId()).build().encode().toUri();
-        return restTemplate.postForObject(url, null, CreatedTrelloCard.class);
+        return restTemplate().postForObject(url, null, CreatedTrelloCard.class);
 
     }
 
