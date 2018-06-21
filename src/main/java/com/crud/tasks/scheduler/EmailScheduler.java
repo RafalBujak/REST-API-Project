@@ -30,18 +30,20 @@ public class EmailScheduler {
     }
 
     public void choosingRightEmailContent(Long size) {
+
+        String messageContent;
+
         if (size == 1) {
-            simpleEmailService.send(new Mail(adminConfig.getAdminMail(),
-                    "",
-                    SUBJECT,
-                    "Currently in database you got: " + size + " task")
-            );
+            messageContent = "Currently in database you got: " + size + "task";
         } else {
+            messageContent = "Currently in database you got: " + size + "tasks";
+        }
+
             simpleEmailService.send(new Mail(adminConfig.getAdminMail(),
                     "",
                     SUBJECT,
-                    "Currently in database you got: " + size + " tasks")
+                    messageContent)
             );
-        }
+
     }
 }
