@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 @Component
 public class TrelloMapper {
 
+    //1
     public List<TrelloBoard> mapToBoards(final List<TrelloBoardDto> trelloBoardDto) {
         return trelloBoardDto.stream()
                 .map(trelloBoard ->
@@ -19,7 +20,7 @@ public class TrelloMapper {
                 )
                 .collect(Collectors.toList());
     }
-
+//4
     public List<TrelloBoardDto> mapToBoardsDto(final List<TrelloBoard> trelloBoards) {
         return trelloBoards.stream()
                 .map(trelloBoard ->
@@ -30,7 +31,7 @@ public class TrelloMapper {
                 )
                 .collect(Collectors.toList());
     }
-
+//2
     public List<TrelloList> mapToList(final List<TrelloListDto> trelloListDto) {
         return trelloListDto.stream()
                 .map(trelloList -> new TrelloList(trelloList.getId(),
@@ -53,7 +54,7 @@ public class TrelloMapper {
                 trelloCard.getPos(),
                 trelloCard.getListId());
     }
-
+//3
     public TrelloCard mapToCard(final TrelloCardDto trelloCardDto) {
         return new TrelloCard(trelloCardDto.getName(),
                 trelloCardDto.getDescription(),
