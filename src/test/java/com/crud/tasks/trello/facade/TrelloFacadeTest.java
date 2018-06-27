@@ -58,6 +58,7 @@ public class TrelloFacadeTest {
         //Then
         assertNotNull(trelloBoardDtos);
         assertEquals(0, trelloBoardDtos.size());
+
     }
 
     @Test
@@ -86,6 +87,7 @@ public class TrelloFacadeTest {
         //Then
         assertNotNull(trelloBoardDtos);
         assertEquals(1, trelloBoardDtos.size());
+
 
         trelloBoardDtos.forEach(trelloBoardDto -> {
             assertEquals("1", trelloBoardDto.getId());
@@ -123,6 +125,9 @@ public class TrelloFacadeTest {
         assertEquals("com/org",createdTrelloCardDto.getShortUrl());
         assertEquals(5,createdTrelloCardDto.getBadges().getVotes());
         assertEquals("card", trelloMapper.mapToCard(card).getName());
+        assertEquals("description", trelloMapper.mapToCard(card).getDescription());
+        assertEquals("1", trelloMapper.mapToCard(card).getListId());
+        assertEquals("pos", trelloMapper.mapToCard(card).getPos());
     }
 
 }

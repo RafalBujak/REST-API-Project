@@ -76,10 +76,8 @@ public class TrelloClientTest {
                 "Task task",
                 "http://test.com"
         );
-        System.out.println("przed " + uri);
         when(restTemplate.postForObject(uri, null, CreatedTrelloCardDto.class)).thenReturn(createdTrelloCardDto);
         //When
-        System.out.println("po " + uri);
         CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
 
         //Then
