@@ -5,8 +5,11 @@ import com.crud.tasks.mapper.TrelloMapper;
 import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.validator.TrelloValidator;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +18,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.anyList;
 import static org.mockito.Mockito.when;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 public class TrelloFacadeTest {
     @InjectMocks
     private TrelloFacade trelloFacade;
@@ -85,11 +89,11 @@ public class TrelloFacadeTest {
 
         trelloBoardDtos.forEach(trelloBoardDto -> {
             assertEquals("1", trelloBoardDto.getId());
-            assertEquals("my_task", trelloBoardDto.getName());
+            assertEquals("test", trelloBoardDto.getName());
 
             trelloBoardDto.getLists().forEach(trelloListDto -> {
                 assertEquals("1", trelloListDto.getId());
-                assertEquals("my_list", trelloListDto.getName());
+                assertEquals("test", trelloListDto.getName());
                 assertEquals(false, trelloListDto.isClosed());
             });
         });
@@ -118,8 +122,6 @@ public class TrelloFacadeTest {
         assertEquals("card",createdTrelloCardDto.getName());
         assertEquals("com/org",createdTrelloCardDto.getShortUrl());
         assertEquals(5,createdTrelloCardDto.getBadges().getVotes());
-        assertEquals(3,createdTrelloCardDto.getBadges().getAttachmentsDtoByType().getTrello().getBoard());
-        assertEquals(4,createdTrelloCardDto.getBadges().getAttachmentsDtoByType().getTrello().getCard());
     }
 
 }
