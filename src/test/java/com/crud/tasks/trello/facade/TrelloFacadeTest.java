@@ -122,6 +122,7 @@ public class TrelloFacadeTest {
         assertEquals("card",createdTrelloCardDto.getName());
         assertEquals("com/org",createdTrelloCardDto.getShortUrl());
         assertEquals(5,createdTrelloCardDto.getBadges().getVotes());
+        assertEquals("card", trelloMapper.mapToCard(card).getName());
     }
 
 }
