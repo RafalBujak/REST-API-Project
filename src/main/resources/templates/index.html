@@ -13,6 +13,21 @@
 
     <!--/*thymesVar id="one" type="com.crud.tasks.controller.StaticWebPageController"*/-->
     <!--/*thymesVar id="two" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+    <!--/*thymesVar id="computationVariable" type="com.crud.tasks.controller.StaticWebPageController"*/-->
 <span th:text="${one} + ${two}"></span>
+
+<br/>
+
+    <span th:inline="text" >[[${calculationNumber}]] * [[${calculationNumber}]] = </span>
+    <span th:text="${calculationNumber} * ${calculationNumber}"></span>
+
+    <br/>
+    <span th:inline="text" >[[${calculationNumber}]] * [[${calculationNumber}]] + [[${calculationNumber}]] = </span>
+    <span th:text="${calculationNumber} * ${calculationNumber} + ${calculationNumber}"></span>
+
+    <br/>
+    <span th:inline="text" >[[${calculationNumber}]] - [[${calculationNumber}]] * [[${calculationNumber}]] = </span>
+    <span th:text="${calculationNumber} - ${calculationNumber} * ${calculationNumber}"></span>
+
 </body>
 </html>
