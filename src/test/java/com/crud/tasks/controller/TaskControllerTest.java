@@ -77,7 +77,7 @@ public class TaskControllerTest {
         when(service.getTask(1L)).thenReturn(Optional.empty());
 
         //When & Then
-        mockMvc.perform(get("/v1/tasks/1")
+        mockMvc.perform(get("/v1/tasks")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .param("taskId", "1"))
@@ -110,7 +110,7 @@ public class TaskControllerTest {
         when(service.getTask(1L)).thenReturn(Optional.empty());
 
         //When & Then
-        mockMvc.perform(delete("/v1/tasks/1")
+        mockMvc.perform(delete("/v1/tasks")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .param("taskId", "1"))

@@ -10,4 +10,6 @@ public class AdminConfig {
 
     @org.springframework.beans.factory.annotation.Value("${admin.mail}")
     private String adminMail;
+    @org.springframework.beans.factory.annotation.Value("${admin.name}")
+    private String adminName;
 }
